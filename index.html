@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 设置文档字符编码 -->
+    <meta charset="UTF-8">
+    <!-- 设置视口以确保响应式设计正常工作 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 网页标题 -->
+    <title>碳足迹计算器</title>
+    <!-- 引入Bootstrap CSS框架 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- 引入自定义样式表 -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 页面标题区域 -->
+        <header class="text-center my-5">
+            <h1>个人碳足迹计算器</h1>
+            <p class="lead">了解您的日常活动对环境的影响</p>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!-- 输入表单卡片 -->
+                <div class="card shadow">
+                    <div class="card-body">
+                        <form id="carbon-form">
+                            <h2 class="mb-4">您的日常活动</h2>
+                            
+                            <!-- 交通部分 - 收集用户交通相关的碳排放数据 -->
+                            <div class="mb-4">
+                                <h3>交通</h3>
+                                <div class="mb-3">
+                                    <label for="car-distance" class="form-label">每周驾车行驶距离 (公里)</label>
+                                    <input type="number" class="form-control" id="car-distance" min="0" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="public-transport" class="form-label">每周公共交通行驶距离 (公里)</label>
+                                    <input type="number" class="form-control" id="public-transport" min="0" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="flight-hours" class="form-label">年飞行时间 (小时)</label>
+                                    <input type="number" class="form-control" id="flight-hours" min="0" value="0">
+                                </div>
+                            </div>
+                            
+                            <!-- 能源部分 - 收集用户家庭能源消耗数据 -->
+                            <div class="mb-4">
+                                <h3>家庭能源</h3>
+                                <div class="mb-3">
+                                    <label for="electricity" class="form-label">月均用电量 (度)</label>
+                                    <input type="number" class="form-control" id="electricity" min="0" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="natural-gas" class="form-label">月均天然气用量 (立方米)</label>
+                                    <input type="number" class="form-control" id="natural-gas" min="0" value="0">
+                                </div>
+                            </div>
+                            
+                            <!-- 饮食部分 - 收集用户饮食习惯数据 -->
+                            <div class="mb-4">
+                                <h3>饮食习惯</h3>
+                                <div class="mb-3">
+                                    <label class="form-label">肉类消费频率</label>
+                                    <select class="form-select" id="meat-consumption">
+                                        <option value="0">素食主义者</option>
+                                        <option value="1">偶尔食用肉类 (每周1-2次)</option>
+                                        <option value="2" selected>适量食用肉类 (每周3-5次)</option>
+                                        <option value="3">大量食用肉类 (几乎每天)</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">本地食品比例</label>
+                                    <select class="form-select" id="local-food">
+                                        <option value="0">几乎不吃本地食品</option>
+                                        <option value="1">少量本地食品 (约25%)</option>
+                                        <option value="2" selected>适量本地食品 (约50%)</option>
+                                        <option value="3">大量本地食品 (约75%以上)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- 提交按钮 -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">计算我的碳足迹</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- 结果区域 - 初始状态为隐藏(d-none) -->
+                <div id="result-section" class="card shadow mt-4 d-none">
+                    <div class="card-body text-center">
+                        <h2 class="mb-4">您的碳足迹结果</h2>
+                        <!-- 显示计算结果的数值 -->
+                        <div class="result-value mb-3">
+                            <span id="carbon-result">0</span>
+                            <span class="unit">吨CO₂/年</span>
+                        </div>
+                        <!-- 进度条可视化展示结果 -->
+                        <div class="progress mb-4">
+                            <div id="result-bar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <!-- 与全球和中国平均水平比较 -->
+                        <p id="result-comparison" class="mb-4"></p>
+                        <!-- 减少碳足迹的建议区域 -->
+                        <div id="suggestions" class="text-start">
+                            <h3>减少碳足迹的建议</h3>
+                            <ul id="suggestion-list" class="mt-3">
+                                <!-- 建议将通过JavaScript动态添加 -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 页脚区域 -->
+        <footer class="text-center mt-5 mb-4">
+            <p>© 2023 碳足迹计算器 | 帮助人们了解并减少环境影响</p>
+        </footer>
+    </div>
+
+    <!-- 引入Bootstrap JavaScript库 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 引入自定义计算器脚本 -->
+    <script src="js/calculator.js"></script>
+</body>
+</html>

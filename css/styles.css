@@ -1,0 +1,94 @@
+/* 设置全局基础样式 */
+body {
+    background-color: #f8f9fa; /* 浅灰色背景 */
+    color: #333; /* 深灰色文本 */
+}
+
+/* 卡片样式设置 */
+.card {
+    border-radius: 15px; /* 圆角边框 */
+    border: none; /* 移除边框 */
+    margin-bottom: 30px; /* 底部外边距 */
+}
+
+/* 卡片内容区域样式 */
+.card-body {
+    padding: 2rem; /* 内边距 */
+}
+
+/* 标题样式 */
+h1, h2, h3 {
+    color: #2c3e50; /* 深蓝灰色标题 */
+}
+
+/* 主要按钮样式 */
+.btn-primary {
+    background-color: #27ae60; /* 绿色背景 - 环保主题 */
+    border-color: #27ae60; /* 匹配边框颜色 */
+    padding: 10px 30px; /* 内边距 */
+    font-weight: 600; /* 字体粗细 */
+    transition: all 0.3s; /* 平滑过渡效果 */
+}
+
+/* 按钮悬停效果 */
+.btn-primary:hover {
+    background-color: #219653; /* 深绿色 */
+    border-color: #219653; /* 匹配边框颜色 */
+    transform: translateY(-2px); /* 轻微上移效果 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 添加阴影效果 */
+}
+
+/* 结果数值样式 */
+.result-value {
+    font-size: 3rem; /* 大字体 */
+    font-weight: bold; /* 粗体 */
+    color: #27ae60; /* 绿色 - 与按钮匹配 */
+}
+
+/* 单位文本样式 */
+.unit {
+    font-size: 1.5rem; /* 较小字体 */
+    color: #7f8c8d; /* 灰色 */
+}
+
+/* 进度条容器样式 */
+.progress {
+    height: 20px; /* 高度 */
+    border-radius: 10px; /* 圆角 */
+}
+
+/* 进度条样式 */
+.progress-bar {
+    background-color: #27ae60; /* 绿色 - 与主题匹配 */
+    transition: width 1s ease-in-out; /* 宽度变化动画 */
+}
+
+/* 建议列表项样式 */
+#suggestion-list li {
+    margin-bottom: 10px; /* 底部外边距 */
+    line-height: 1.6; /* 行高 */
+}
+
+/* 页脚样式 */
+footer {
+    color: #7f8c8d; /* 灰色文本 */
+    font-size: 0.9rem; /* 小字体 */
+}
+
+/* 响应式设计调整 - 针对小屏幕设备 */
+@media (max-width: 768px) {
+    /* 减小卡片内边距 */
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    /* 减小结果数值字体大小 */
+    .result-value {
+        font-size: 2.5rem;
+    }
+    
+    /* 减小单位字体大小 */
+    .unit {
+        font-size: 1.2rem;
+    }
+}
