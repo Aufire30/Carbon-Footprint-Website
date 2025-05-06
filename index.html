@@ -30,6 +30,19 @@
                         <form id="carbon-form">
                             <h2 class="mb-4">您的日常活动</h2>
                             
+                            <!-- 基础信息部分 - 收集用户个人或组织的基本信息 -->
+                            <div class="mb-4">
+                                <h3>基础信息</h3>
+                                <div class="mb-3">
+                                    <label for="user-name" class="form-label">姓名</label>
+                                    <input type="text" class="form-control" id="user-name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="user-id" class="form-label">学号</label>
+                                    <input type="text" class="form-control" id="user-id">
+                                </div>
+                            </div>
+                            
                             <!-- 交通部分 - 收集用户交通相关的碳排放数据 -->
                             <div class="mb-4">
                                 <h3>交通</h3>
@@ -41,10 +54,6 @@
                                     <label for="public-transport" class="form-label">每周公共交通行驶距离 (公里)</label>
                                     <input type="number" class="form-control" id="public-transport" min="0" value="0">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="flight-hours" class="form-label">年飞行时间 (小时)</label>
-                                    <input type="number" class="form-control" id="flight-hours" min="0" value="0">
-                                </div>
                             </div>
                             
                             <!-- 能源部分 - 收集用户家庭能源消耗数据 -->
@@ -53,10 +62,6 @@
                                 <div class="mb-3">
                                     <label for="electricity" class="form-label">月均用电量 (度)</label>
                                     <input type="number" class="form-control" id="electricity" min="0" value="0">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="natural-gas" class="form-label">月均天然气用量 (立方米)</label>
-                                    <input type="number" class="form-control" id="natural-gas" min="0" value="0">
                                 </div>
                             </div>
                             
@@ -80,6 +85,50 @@
                                         <option value="2" selected>适量本地食品 (约50%)</option>
                                         <option value="3">大量本地食品 (约75%以上)</option>
                                     </select>
+                                </div>
+                            </div>
+                            
+                            <!-- 参数设置部分 - 允许用户自定义碳排放因子 -->
+                            <div class="mb-4">
+                                <h3>参数设置</h3>
+                                <p class="text-muted small mb-3">您可以根据实际情况调整以下碳排放因子参数</p>
+                                
+                                <div class="accordion" id="parametersAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTransport">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTransport" aria-expanded="false" aria-controls="collapseTransport">
+                                                交通参数
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTransport" class="accordion-collapse collapse" aria-labelledby="headingTransport" data-bs-parent="#parametersAccordion">
+                                            <div class="accordion-body">
+                                                <div class="mb-3">
+                                                    <label for="car-factor" class="form-label">汽车碳排放因子 (kg CO₂/公里)</label>
+                                                    <input type="number" class="form-control" id="car-factor" min="0.01" step="0.01" value="0.12">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="public-transport-factor" class="form-label">公共交通碳排放因子 (kg CO₂/公里)</label>
+                                                    <input type="number" class="form-control" id="public-transport-factor" min="0.01" step="0.01" value="0.04">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingEnergy">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEnergy" aria-expanded="false" aria-controls="collapseEnergy">
+                                                能源参数
+                                            </button>
+                                        </h2>
+                                        <div id="collapseEnergy" class="accordion-collapse collapse" aria-labelledby="headingEnergy" data-bs-parent="#parametersAccordion">
+                                            <div class="accordion-body">
+                                                <div class="mb-3">
+                                                    <label for="electricity-factor" class="form-label">电力碳排放因子 (kg CO₂/度)</label>
+                                                    <input type="number" class="form-control" id="electricity-factor" min="0.01" step="0.01" value="0.5">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             
