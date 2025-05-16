@@ -55,10 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
     carbonForm.addEventListener('submit', function(e) {
         e.preventDefault(); // 阻止表单默认提交行为
         
-        // 获取用户输入的基础信息
-        const userName = document.getElementById('user-name').value || '匿名用户';
-        const userId = document.getElementById('user-id').value || '未填写';
-        
         // 获取用户输入的表单数据并转换为数值
         const carDistance = parseFloat(document.getElementById('car-distance').value) || 0;
         const publicTransport = parseFloat(document.getElementById('public-transport').value) || 0;
@@ -116,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
         resultBar.style.backgroundColor = carbonLevel.color;
         
         // 更新比较结果文本，添加用户名称、学号、碳足迹等级和百分比
-        resultComparison.innerHTML = `${userName}（学号：${userId}）的年碳足迹为 <strong>${totalEmissions.toFixed(2)}</strong> 吨CO₂，
+        resultComparison.innerHTML = `您的年碳足迹为 <strong>${totalEmissions.toFixed(2)}</strong> 吨CO₂，
             <span style="color:${carbonLevel.color};font-weight:bold;">等级：${carbonLevel.level}（${compareText}）</span>，
             全球平均水平为 <strong>${globalAverage}</strong> 吨，
             中国平均水平为 <strong>${chinaAverage}</strong> 吨。`;
